@@ -60,19 +60,16 @@ function novaTarefa() {
 
 function pesquisarTarefas() {
     let lis = document.querySelectorAll("ul li");
-    if (busca.value.length > 0) {
+    if (pesquisar.value.length > 0) {
         lis.forEach(li => {
-            if(!li.children[0].innerText.includes(busca.value)){
-                li.classList.add('oculto');
-            }
-            else{
+            let titulo = li.children[0].innerText.toLowerCase()
+            let descricao = li.children[1].innerText.toLowerCase()
+
+            if(titulo.includes(pesquisar.value) || descricao.includes(pesquisar.value)){
                 li.classList.remove('oculto');
             }
-            if(!li.children[1].innerText.includes(busca.value)){
-                li.classList.add('oculto');
-            }
             else{
-                li.classList.remove('oculto');
+                li.classList.add('oculto');
             }
         })
     } else {
